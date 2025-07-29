@@ -22,4 +22,8 @@ def robo_gallery(request):
     """
     return render(request, 'Landing/robots.html')
 
-
+def projects_page(request):
+    """
+    Render the projects page.
+    """
+    return render(request, 'Landing/projects.html')
