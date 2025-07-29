@@ -1,0 +1,190 @@
+{% extends "Landing/base.html" %}
+
+{%block content%}
+
+<!-- Robots Section -->
+    <section id="robots" class="section-padding section-bg-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">Our Robots</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    Engineering <span class="gradient-text">Excellence</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    Each robot represents months of innovation, engineering, and passion. 
+                    Discover the machines that have competed at the highest levels of FIRST Robotics.
+                </p>
+            </div>
+
+            <!-- Capabilities -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-lightning-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Lightning Fast</h4>
+                        <p class="text-muted-custom">Optimized for speed and precision in competitive environments</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-cpu-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">AI-Powered</h4>
+                        <p class="text-muted-custom">Advanced computer vision and autonomous decision making</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-gear-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Built to Last</h4>
+                        <p class="text-muted-custom">Robust engineering designed for intense competition</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robot Gallery -->
+            <div class="row g-4 mb-5">
+                <!-- Robot 1 -->
+                <div class="col-12">
+                    <div class="card-custom reveal">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="position-relative h-100" style="min-height: 300px;">
+                                    <div class="position-absolute inset-0 d-flex align-items-center justify-content-center bg-primary-custom"
+                                         style="background: var(--gradient-card);">
+                                        <i class="bi bi-robot icon-xl text-primary-custom"></i>
+                                    </div>
+                                    <span class="badge badge-status badge-active position-absolute top-0 start-0 m-3">Active</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body p-4">
+                                    <span class="badge badge-custom text-primary-custom border-primary-custom mb-2">2024 Season</span>
+                                    <h3 class="h4 fw-bold text-primary-custom mb-3">Crescendo Champion</h3>
+                                    <p class="text-muted-custom mb-4">
+                                        Our latest creation designed for the 2024 CRESCENDO season, featuring advanced note-handling 
+                                        mechanisms and precise autonomous capabilities.
+                                    </p>
+                                    <div class="mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Key Features</h5>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Advanced Vision System
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Precision Shooter
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Autonomous Navigation
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Lightweight Design
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-custom">
+                                        Learn More
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robot 2 -->
+                <div class="col-12">
+                    <div class="card-custom reveal">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="position-relative h-100" style="min-height: 300px;">
+                                    <div class="position-absolute inset-0 d-flex align-items-center justify-content-center"
+                                         style="background: var(--gradient-card);">
+                                        <i class="bi bi-robot icon-xl text-primary-custom"></i>
+                                    </div>
+                                    <span class="badge badge-status bg-secondary position-absolute top-0 start-0 m-3">Retired</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body p-4">
+                                    <span class="badge badge-custom text-primary-custom border-primary-custom mb-2">2023 Season</span>
+                                    <h3 class="h4 fw-bold text-primary-custom mb-3">Charged Up Innovator</h3>
+                                    <p class="text-muted-custom mb-4">
+                                        Built for the CHARGED UP challenge with revolutionary cone and cube manipulation systems.
+                                    </p>
+                                    <div class="mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Key Features</h5>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Dual Manipulation Arms
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Balance System
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Energy Efficiency
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Modular Design
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-custom">
+                                        Learn More
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center reveal">
+                <div class="card-gradient-border">
+                    <div class="card-body p-5 position-relative" style="z-index: 1;">
+                        <h3 class="h4 fw-bold mb-4 text-primary-custom">Want to See Our Robots in Action?</h3>
+                        <p class="text-muted-custom mb-4">
+                            Follow our journey on social media and watch our competition videos.
+                        </p>
+                        <button class="btn btn-glow btn-lg">
+                            Watch Competition Videos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

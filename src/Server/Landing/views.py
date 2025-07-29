@@ -16,4 +16,10 @@ def about_page(request):
     """
     return render(request, 'Landing/about.html')
 
+def robo_gallery(request):
+    """
+    Render the Robo Gallery page.
+    """
+    return render(request, 'Landing/robots.html')
+
 
