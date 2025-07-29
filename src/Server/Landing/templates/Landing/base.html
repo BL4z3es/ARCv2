@@ -1,0 +1,120 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ARC#6014 - Pink Dragons{% endblock %}</title>
+    <meta name="description" content="ARC#6014 - FIRST Robotics Competition team from Robert College, Istanbul, Turkey">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'Landing/css/styles.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom" id="navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <div class="navbar-brand-custom me-3">
+                    <i class="bi bi-robot text-white"></i>
+                </div>
+                <span class="fw-bold text-primary-custom">ARC#6014</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/robots">Robots</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="/contact">Contact</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="https://github.com" class="btn btn-outline-custom me-2">
+                        <i class="bi bi-github me-1"></i> GitHub
+                    </a>
+                    <a href="/contact" class="btn btn-glow">
+                        <i class="bi bi-envelope me-1"></i> Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-secondary-custom border-top border-primary-custom py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="navbar-brand-custom me-3">
+                            <i class="bi bi-robot text-white"></i>
+                        </div>
+                        <span class="h4 fw-bold text-primary-custom mb-0">ARC#6014</span>
+                    </div>
+                    <p class="text-muted-custom mb-4">
+                        Inspiring the next generation of engineers through competitive robotics,
+                        STEM education, and innovation. Based in Istanbul, Turkey.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-outline-custom btn-sm"><i class="bi bi-github"></i></button>
+                        <button class="btn btn-outline-custom btn-sm"><i class="bi bi-instagram"></i></button>
+                        <button class="btn btn-outline-custom btn-sm"><i class="bi bi-youtube"></i></button>
+                        <button class="btn btn-outline-custom btn-sm"><i class="bi bi-linkedin"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold text-primary-custom mb-3">Quick Links</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="/team" class="text-muted-custom text-decoration-none">About Team</a></li>
+                                <li class="mb-2"><a href="/robots" class="text-muted-custom text-decoration-none">Our Robots</a></li>
+                                <li class="mb-2"><a href="/projects" class="text-muted-custom text-decoration-none">Projects</a></li>
+                                <li class="mb-2"><a href="/achievements" class="text-muted-custom text-decoration-none">Achievements</a></li>
+                                <li class="mb-2"><a href="/contact" class="text-muted-custom text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold text-primary-custom mb-3">Resources</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">FIRST Robotics</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Robert College</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Competition Schedule</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Sponsorship</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Media Kit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-primary-custom my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted-custom mb-0">&copy; 2024 ARC#6014. Built with passion for robotics.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted-custom mb-0">FIRST Robotics Competition Team #6014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'Landing/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}ARC#6014{% endblock %}</title>
+  <style>
+    /* Core Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Root Variables */
+    :root {
+      --background: hsl(0, 0%, 8%);
+      --foreground: hsl(320, 50%, 95%);
+      --card: hsl(0, 0%, 12%);
+      --primary: hsl(320, 100%, 60%);
+      --accent: hsl(320, 100%, 75%);
+      --border: hsl(0, 0%, 20%);
+      --radius: 12px;
+      --transition: 0.3s ease-in-out;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--background);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 6px;
+      border: 3px solid var(--background);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--background);
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--foreground);
+      text-decoration: none;
+      position: relative;
+      transition: var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Navigation */
+    .menu-button {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-button {
+        display: inline-block;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--foreground);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+      }
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 1rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      color: var(--foreground);
+    }
+
+    .footer h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .footer a {
+      color: var(--foreground);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color var(--transition);
+    }
+
+    .footer a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: hsl(320, 20%, 65%);
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .arc-gradient {
+      background: linear-gradient(45deg, hsl(320, 84%, 42%), hsl(320, 100%, 75%));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo arc-gradient">ARC#6014</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Team</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </div>
+      <button class="menu-button">Menu</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="fade-in">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <h3>ARC#6014</h3>
+        <p>Empowering the next generation of innovators through robotics and engineering excellence.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <a href="#">Home</a><br />
+        <a href="#">About</a><br />
+        <a href="#">Projects</a><br />
+        <a href="#">Team</a><br />
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <a href="#">GitHub</a><br />
+        <a href="#">Discord</a><br />
+        <a href="#">Instagram</a><br />
+        <a href="#">YouTube</a><br />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 ARC#6014. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

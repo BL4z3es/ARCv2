@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Title Animation - Manim Style</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3730a3);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .hero-line {
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            margin: 10px 0;
+        }
+
+        .hero-char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px) scale(0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-char.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .hero-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #fbbf24;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Demo styles */
+        .demo-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .demo-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .demo-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-controls">
+        <button class="demo-button" onclick="restartAnimation()">Restart Animation</button>
+    </div>
+
+    <div id="hero-title">
+        Welcome to the Future of Innovation
+        Transform your ideas into reality
+        Where creativity meets technology
+        Building tomorrow, today
+    </div>
+
+    <script>
+        function createManimTextEffect() {
+            const heroElement = document.getElementById('hero-title');
+            if (!heroElement) {
+                console.warn('Element with id "hero-title" not found');
+                return;
+            }
+
+            // Store original text and clear the element
+            const originalText = heroElement.textContent.trim();
+            heroElement.innerHTML = '';
+
+            // Split text into lines
+            const lines = originalText.split('\n').map(line => line.trim()).filter(line => line);
+
+            // Create line elements
+            const lineElements = [];
+            lines.forEach((lineText, lineIndex) => {
+                const lineElement = document.createElement('span');
+                lineElement.className = 'hero-line';
+                
+                // Split line into characters and create spans for each
+                const chars = lineText.split('');
+                chars.forEach((char, charIndex) => {
+                    const charElement = document.createElement('span');
+                    charElement.className = 'hero-char';
+                    charElement.textContent = char === ' ' ? '\u00A0' : char; // Non-breaking space for spaces
+                    lineElement.appendChild(charElement);
+                });
+
+                heroElement.appendChild(lineElement);
+                lineElements.push(lineElement);
+            });
+
+            // Animation function
+            function animateText() {
+                lineElements.forEach((lineElement, lineIndex) => {
+                    // Show line container first
+                    setTimeout(() => {
+                        lineElement.classList.add('visible');
+                        
+                        // Then animate each character in the line
+                        const chars = lineElement.querySelectorAll('.hero-char');
+                        chars.forEach((char, charIndex) => {
+                            setTimeout(() => {
+                                char.classList.add('visible');
+                            }, charIndex * 50); // 50ms delay between characters
+                        });
+
+                        // Add cursor after last character of current line
+                        const lastChar = chars[chars.length - 1];
+                        if (lastChar && lineIndex === lineElements.length - 1) {
+                            setTimeout(() => {
+                                const cursor = document.createElement('span');
+                                cursor.className = 'cursor';
+                                lineElement.appendChild(cursor);
+                                
+                                // Remove cursor after 3 seconds
+                                setTimeout(() => {
+                                    cursor.remove();
+                                }, 3000);
+                            }, chars.length * 50 + 200);
+                        }
+
+                    }, lineIndex * 800 + 500); // 800ms delay between lines, 500ms initial delay
+                });
+            }
+
+            // Start animation
+            setTimeout(animateText, 100);
+        }
+
+        // Restart animation function for demo
+        function restartAnimation() {
+            const heroElement = document.getElementById('hero-title');
+            
+            // Reset text content
+            heroElement.textContent = `Welcome to the Future of Innovation
+Transform your ideas into reality
+Where creativity meets technology
+Building tomorrow, today`;
+
+            // Restart the effect
+            setTimeout(() => {
+                createManimTextEffect();
+            }, 100);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createManimTextEffect();
+        });
+
+        // Also provide the function globally for manual use
+        window.createManimTextEffect = createManimTextEffect;
+    </script>
+</body>
+</html>

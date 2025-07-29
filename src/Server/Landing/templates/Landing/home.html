@@ -1,0 +1,80 @@
+{% extends "Landing/base.html" %}
+
+
+
+
+{% block content %}
+<section id="home" class="hero-section d-flex align-items-center">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+    
+    <div class="container position-relative" style="z-index: 10;">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-10">
+                <!-- Badge -->
+                <div class="badge-custom d-inline-flex align-items-center mb-4 reveal">
+                    <i class="bi bi-stars text-primary-custom me-2"></i>
+                    <span>FIRST Robotics Competition Team</span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="display-1 fw-bold mb-4 reveal particle-title">
+                    <span class="gradient-text">ARC#6014</span>
+                </h1>
+                <div class="particle-container" id="particleContainer"></div>
+                <p class="display-6 fw-semibold text-muted-custom mb-4 reveal">
+                    Robots. Passion. Love.
+                </p>
+                
+                <!-- Description -->
+                <p class="lead text-muted-custom mb-5 reveal" style="max-width: 800px; margin: 0 auto;">
+                    We are the FIRST Robotics Competition team of Robert College, based in Istanbul, Turkey. 
+                    Since 2016, we've been pushing the boundaries of innovation and inspiring the next generation of engineers.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5 reveal">
+                    <button class="btn btn-glow btn-lg px-4 py-3">
+                        <span class="me-2">Discover Our Journey</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline-custom btn-lg px-4 py-3">
+                        <i class="bi bi-play-fill me-2"></i>
+                        <span>Watch Our Robots</span>
+                    </button>
+                </div>
+                
+                <!-- Stats -->
+                <div class="row g-4 mt-5">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="h2 fw-bold gradient-text mb-1">9+</div>
+                        <small class="text-muted-custom">Years Active</small>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="h2 fw-bold gradient-text mb-1">50+</div>
+                        <small class="text-muted-custom">Team Members</small>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="h2 fw-bold gradient-text mb-1">25+</div>
+                        <small class="text-muted-custom">Awards Won</small>
+                    </div>
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="h2 fw-bold gradient-text mb-1">10+</div>
+                        <small class="text-muted-custom">Robots Built</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 animate-bounce">
+        <div class="d-flex justify-content-center">
+            <div style="width: 24px; height: 40px; border: 2px solid rgba(233, 75, 151, 0.5); border-radius: 20px; position: relative;">
+                <div style="width: 4px; height: 12px; background: var(--primary); border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: pulseGlow 2s ease-in-out infinite;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

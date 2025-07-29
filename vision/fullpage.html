@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARC#6014 - Robotics Excellence</title>
+    <meta name="description" content="ARC#6014 - FIRST Robotics Competition team from Robert College, Istanbul, Turkey">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ARC#6014 Design System */
+        :root {
+            /* Pink-Black Theme Colors */
+            --bs-primary: #E94B97;
+            --bs-secondary: #FF66CC;
+            --bs-dark: #0C0607;
+            --bs-light: #F5F0F3;
+            --bs-info: #FF44DD;
+            --bs-success: #10B981;
+            --bs-warning: #F59E0B;
+            --bs-danger: #EF4444;
+            
+            /* Custom Variables */
+            --background: #0C0607;
+            --background-secondary: #141016;
+            --foreground: #F5F0F3;
+            --primary: #E94B97;
+            --primary-glow: #FF66CC;
+            --primary-dark: #C7377F;
+            --accent: #FF44DD;
+            --secondary: #FF99E6;
+            --muted: #2A1F26;
+            --muted-foreground: #B8A8B3;
+            --border: #332A30;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #E94B97, #FF44DD);
+            --gradient-hero: linear-gradient(135deg, #0C0607, #141016, rgba(233, 75, 151, 0.1));
+            --gradient-card: linear-gradient(145deg, #141016, #1A151C);
+            --gradient-border: linear-gradient(90deg, #E94B97, #FF44DD, #FF99E6);
+            
+            /* Shadows */
+            --shadow-pink: 0 0 20px rgba(233, 75, 151, 0.3);
+            --shadow-pink-intense: 0 0 40px rgba(233, 75, 151, 0.5);
+            --shadow-card: 0 8px 32px rgba(12, 6, 7, 0.6);
+            --shadow-elegant: 0 20px 60px rgba(12, 6, 7, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Custom Utilities */
+        .text-primary-custom { color: var(--primary) !important; }
+        .text-muted-custom { color: var(--muted-foreground) !important; }
+        .bg-primary-custom { background: var(--primary) !important; }
+        .bg-secondary-custom { background: var(--background-secondary) !important; }
+        .bg-card-custom { background: var(--gradient-card) !important; }
+        .border-primary-custom { border-color: var(--primary) !important; }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-border);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        /* Custom Buttons */
+        .btn-glow {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            box-shadow: var(--shadow-pink);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow:hover {
+            box-shadow: var(--shadow-pink-intense);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(20, 16, 22, 0.8);
+            border-color: var(--primary);
+            transform: scale(1.05);
+            color: var(--foreground);
+        }
+
+        /* Cards */
+        .card-custom {
+            background: var(--gradient-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-custom:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-elegant);
+            border-color: var(--primary);
+        }
+
+        .card-gradient-border {
+            position: relative;
+            background: var(--gradient-card);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card-gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            background: var(--gradient-border);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
+        }
+
+        /* Navigation */
+        .navbar-custom {
+            background: transparent;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(12, 6, 7, 0.9);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-card);
+        }
+
+        .navbar-brand-custom {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        .nav-link-custom {
+            color: var(--muted-foreground) !important;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link-custom:hover {
+            color: var(--primary) !important;
+        }
+
+        .nav-link-custom::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-border);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-custom:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M20 20h60v60H20z" fill="none" stroke="%23E94B97" stroke-width="0.5" opacity="0.3"/><circle cx="20" cy="20" r="2" fill="%23FF44DD" opacity="0.5"/><circle cx="80" cy="80" r="2" fill="%23FF66CC" opacity="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23circuit)"/></svg>') center/cover;
+            opacity: 0.1;
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Hero Text */
+        .particle-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            background: linear-gradient(135deg, #b847ff, #ff47b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow-pulse 2s ease-in-out infinite alternate;
+        }
+
+        .particle-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #b847ff;
+            border-radius: 50%;
+            animation: particle-float 3s ease-in-out infinite;
+            box-shadow: 0 0 10px #b847ff;
+        }
+
+        @keyframes glow-pulse {
+            0% { filter: drop-shadow(0 0 20px #b847ff); }
+            100% { filter: drop-shadow(0 0 40px #ff47b8); }
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+        }
+
+
+
+
+
+        /* Badges */
+        .badge-custom {
+            background: var(--gradient-card);
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .badge-primary-custom {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .badge-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-active { background: linear-gradient(135deg, #10B981, #059669); }
+        .badge-completed { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+        .badge-development { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+        .badge-research { background: linear-gradient(135deg, #F59E0B, #D97706); }
+
+        /* Animations */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(233, 75, 151, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(233, 75, 151, 0.8), 0 0 80px rgba(233, 75, 151, 0.4); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0, -30px, 0); }
+            70% { transform: translate3d(0, -15px, 0); }
+            90% { transform: translate3d(0, -4px, 0); }
+        }
+
+        /* Animation Classes */
+        .animate-pulse { animation: pulseGlow 2s ease-in-out infinite; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-bounce { animation: bounce 2s infinite; }
+        .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Styles */
+        .section-padding { padding: 6rem 0; }
+        .section-bg { background: linear-gradient(to bottom right, var(--background), var(--background-secondary), var(--background)); }
+        .section-bg-alt { background: linear-gradient(to bottom right, var(--background-secondary), var(--background), var(--background-secondary)); }
+
+        /* Icon Styles */
+        .icon { font-size: 1.5rem; }
+        .icon-sm { font-size: 1rem; }
+        .icon-lg { font-size: 2rem; }
+        .icon-xl { font-size: 3rem; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .display-1 { font-size: 3rem; }
+            .display-2 { font-size: 2.5rem; }
+            .hero-section { min-height: 80vh; }
+            .section-padding { padding: 4rem 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--background); }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom" id="navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="navbar-brand-custom me-3">
+                    <i class="bi bi-robot text-white"></i>
+                </div>
+                <span class="fw-bold text-primary-custom">ARC#6014</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#robots">Robots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#achievements">Achievements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-custom" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-custom me-2">
+                        <i class="bi bi-github me-1"></i>
+                        GitHub
+                    </button>
+                    <button class="btn btn-glow">
+                        <i class="bi bi-envelope me-1"></i>
+                        Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="hero-bg"></div>
+        <div class="hero-particles" id="particles"></div>
+        
+        <div class="container position-relative" style="z-index: 10;">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <!-- Badge -->
+                    <div class="badge-custom d-inline-flex align-items-center mb-4 reveal">
+                        <i class="bi bi-stars text-primary-custom me-2"></i>
+                        <span>FIRST Robotics Competition Team</span>
+                    </div>
+                    
+                    <!-- Main Heading -->
+                    <h1 class="display-1 fw-bold mb-4 reveal particle-title">
+                        <span class="gradient-text">ARC#6014</span>
+                    </h1>
+                    <div class="particle-container" id="particleContainer"></div>
+
+                    <p class="display-6 fw-semibold text-muted-custom mb-4 reveal">
+                        Robots. Passion. Love.
+                    </p>
+                    
+                    <!-- Description -->
+                    <p class="lead text-muted-custom mb-5 reveal" style="max-width: 800px; margin: 0 auto;">
+                        We are the FIRST Robotics Competition team of Robert College, based in Istanbul, Turkey. 
+                        Since 2016, we've been pushing the boundaries of innovation and inspiring the next generation of engineers.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mb-5 reveal">
+                        <button class="btn btn-glow btn-lg px-4 py-3">
+                            <span class="me-2">Discover Our Journey</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-outline-custom btn-lg px-4 py-3">
+                            <i class="bi bi-play-fill me-2"></i>
+                            <span>Watch Our Robots</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="row g-4 mt-5">
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="h2 fw-bold gradient-text mb-1">9+</div>
+                            <small class="text-muted-custom">Years Active</small>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="h2 fw-bold gradient-text mb-1">50+</div>
+                            <small class="text-muted-custom">Team Members</small>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="h2 fw-bold gradient-text mb-1">25+</div>
+                            <small class="text-muted-custom">Awards Won</small>
+                        </div>
+                        <div class="col-6 col-md-3 reveal">
+                            <div class="h2 fw-bold gradient-text mb-1">10+</div>
+                            <small class="text-muted-custom">Robots Built</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 animate-bounce">
+            <div class="d-flex justify-content-center">
+                <div style="width: 24px; height: 40px; border: 2px solid rgba(233, 75, 151, 0.5); border-radius: 20px; position: relative;">
+                    <div style="width: 4px; height: 12px; background: var(--primary); border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: pulseGlow 2s ease-in-out infinite;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="team" class="section-padding section-bg">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">About ARC#6014</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    More Than <span class="gradient-text">Robots</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    Inspired by the motto of FIRST, ARC is deeply involved in projects to spread STEM education 
+                    across Turkey and beyond. We believe in building not just robots, but the future.
+                </p>
+            </div>
+
+            <!-- Mission Statement -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card-gradient-border reveal">
+                        <div class="card-body p-5 text-center position-relative" style="z-index: 1;">
+                            <h3 class="h3 fw-bold mb-4 text-primary-custom">Our Mission</h3>
+                            <p class="lead text-muted-custom">
+                                To inspire young people to be science and technology leaders and innovators by engaging them 
+                                in exciting mentor-based programs that build science, engineering, and technology skills, 
+                                that inspire innovation, and that foster well-rounded life capabilities including 
+                                self-confidence, communication, and leadership.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Values Grid -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #EF4444, #EC4899);">
+                                <i class="bi bi-heart-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Passion</h4>
+                        <p class="text-muted-custom">We truly enjoy building robots and pushing the boundaries of innovation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-bullseye text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Excellence</h4>
+                        <p class="text-muted-custom">Striving for perfection in every competition and project we undertake.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #8B5CF6, #E94B97);">
+                                <i class="bi bi-people-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Teamwork</h4>
+                        <p class="text-muted-custom">Collaboration and mutual support drive our success and growth.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #FF44DD, #FF99E6);">
+                                <i class="bi bi-lightbulb-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Innovation</h4>
+                        <p class="text-muted-custom">Creating solutions that inspire and transform the future of robotics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Stats -->
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="reveal">
+                        <div class="display-4 fw-bold gradient-text mb-2">2016</div>
+                        <p class="text-muted-custom">Founded Year</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="reveal">
+                        <div class="display-4 fw-bold gradient-text mb-2">Istanbul</div>
+                        <p class="text-muted-custom">Based in Turkey</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="reveal">
+                        <div class="display-4 fw-bold gradient-text mb-2">FIRST</div>
+                        <p class="text-muted-custom">Competition Participant</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Robots Section -->
+    <section id="robots" class="section-padding section-bg-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">Our Robots</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    Engineering <span class="gradient-text">Excellence</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    Each robot represents months of innovation, engineering, and passion. 
+                    Discover the machines that have competed at the highest levels of FIRST Robotics.
+                </p>
+            </div>
+
+            <!-- Capabilities -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-lightning-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Lightning Fast</h4>
+                        <p class="text-muted-custom">Optimized for speed and precision in competitive environments</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-cpu-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">AI-Powered</h4>
+                        <p class="text-muted-custom">Advanced computer vision and autonomous decision making</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-gear-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Built to Last</h4>
+                        <p class="text-muted-custom">Robust engineering designed for intense competition</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robot Gallery -->
+            <div class="row g-4 mb-5">
+                <!-- Robot 1 -->
+                <div class="col-12">
+                    <div class="card-custom reveal">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="position-relative h-100" style="min-height: 300px;">
+                                    <div class="position-absolute inset-0 d-flex align-items-center justify-content-center bg-primary-custom"
+                                         style="background: var(--gradient-card);">
+                                        <i class="bi bi-robot icon-xl text-primary-custom"></i>
+                                    </div>
+                                    <span class="badge badge-status badge-active position-absolute top-0 start-0 m-3">Active</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body p-4">
+                                    <span class="badge badge-custom text-primary-custom border-primary-custom mb-2">2024 Season</span>
+                                    <h3 class="h4 fw-bold text-primary-custom mb-3">Crescendo Champion</h3>
+                                    <p class="text-muted-custom mb-4">
+                                        Our latest creation designed for the 2024 CRESCENDO season, featuring advanced note-handling 
+                                        mechanisms and precise autonomous capabilities.
+                                    </p>
+                                    <div class="mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Key Features</h5>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Advanced Vision System
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Precision Shooter
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Autonomous Navigation
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Lightweight Design
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-custom">
+                                        Learn More
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robot 2 -->
+                <div class="col-12">
+                    <div class="card-custom reveal">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="position-relative h-100" style="min-height: 300px;">
+                                    <div class="position-absolute inset-0 d-flex align-items-center justify-content-center"
+                                         style="background: var(--gradient-card);">
+                                        <i class="bi bi-robot icon-xl text-primary-custom"></i>
+                                    </div>
+                                    <span class="badge badge-status bg-secondary position-absolute top-0 start-0 m-3">Retired</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body p-4">
+                                    <span class="badge badge-custom text-primary-custom border-primary-custom mb-2">2023 Season</span>
+                                    <h3 class="h4 fw-bold text-primary-custom mb-3">Charged Up Innovator</h3>
+                                    <p class="text-muted-custom mb-4">
+                                        Built for the CHARGED UP challenge with revolutionary cone and cube manipulation systems.
+                                    </p>
+                                    <div class="mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Key Features</h5>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Dual Manipulation Arms
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Balance System
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Energy Efficiency
+                                                </div>
+                                                <div class="d-flex align-items-center text-sm text-muted-custom mb-2">
+                                                    <div class="rounded-circle bg-primary-custom me-2" style="width: 8px; height: 8px;"></div>
+                                                    Modular Design
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline-custom">
+                                        Learn More
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center reveal">
+                <div class="card-gradient-border">
+                    <div class="card-body p-5 position-relative" style="z-index: 1;">
+                        <h3 class="h4 fw-bold mb-4 text-primary-custom">Want to See Our Robots in Action?</h3>
+                        <p class="text-muted-custom mb-4">
+                            Follow our journey on social media and watch our competition videos.
+                        </p>
+                        <button class="btn btn-glow btn-lg">
+                            Watch Competition Videos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding section-bg">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">Our Projects</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    Beyond <span class="gradient-text">Competition</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    From STEM education initiatives to cutting-edge technical innovations, 
+                    our projects make a lasting impact on our community and the robotics world.
+                </p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="d-flex flex-wrap justify-content-center gap-3 mb-5 reveal">
+                <button class="btn btn-glow btn-filter active" data-category="all">
+                    <i class="bi bi-globe me-2"></i>All Projects
+                </button>
+                <button class="btn btn-outline-custom btn-filter" data-category="education">
+                    <i class="bi bi-book me-2"></i>STEM Education
+                </button>
+                <button class="btn btn-outline-custom btn-filter" data-category="community">
+                    <i class="bi bi-people me-2"></i>Community Outreach
+                </button>
+                <button class="btn btn-outline-custom btn-filter" data-category="innovation">
+                    <i class="bi bi-lightbulb me-2"></i>Innovation Labs
+                </button>
+                <button class="btn btn-outline-custom btn-filter" data-category="technical">
+                    <i class="bi bi-code me-2"></i>Technical Development
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row g-4 mb-5" id="projects-grid">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="education">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="bg-primary-custom d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-mortarboard icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-active position-absolute top-0 start-0 m-3">Ongoing</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Community Impact</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">FIRST Tech Challenge Mentorship</h4>
+                            <p class="text-muted-custom mb-4">
+                                Mentoring younger FTC teams across Turkey, providing technical guidance and sharing our competition experience.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">Mentorship</span>
+                                <span class="badge bg-secondary">FTC</span>
+                                <span class="badge bg-secondary">Education</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">15+ teams mentored</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="technical">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-code-slash icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-development position-absolute top-0 start-0 m-3">Development</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Technical Innovation</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">Open Source Robot Framework</h4>
+                            <p class="text-muted-custom mb-4">
+                                Developing an open-source robot control framework specifically designed for FRC teams.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">Java</span>
+                                <span class="badge bg-secondary">ROS</span>
+                                <span class="badge bg-secondary">Computer Vision</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">GitHub: 200+ stars</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="innovation">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-eye icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-completed position-absolute top-0 start-0 m-3">Completed</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Technical Excellence</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">AI Vision System</h4>
+                            <p class="text-muted-custom mb-4">
+                                Advanced computer vision system for autonomous robot navigation and object recognition.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">TensorFlow</span>
+                                <span class="badge bg-secondary">OpenCV</span>
+                                <span class="badge bg-secondary">Python</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">Regional Innovation Award</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="community">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-gender-female icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-active position-absolute top-0 start-0 m-3">Annual</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Social Impact</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">STEM Girls Initiative</h4>
+                            <p class="text-muted-custom mb-4">
+                                Special programs designed to encourage girls in STEM fields through hands-on robotics experiences.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">Mentorship</span>
+                                <span class="badge bg-secondary">Workshops</span>
+                                <span class="badge bg-secondary">Leadership</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">100+ girls participated</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="education">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-tools icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-active position-absolute top-0 start-0 m-3">Active</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Educational Outreach</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">Robotics Workshop Series</h4>
+                            <p class="text-muted-custom mb-4">
+                                Interactive workshops for middle and high school students introducing basic robotics concepts.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">Arduino</span>
+                                <span class="badge bg-secondary">Scratch</span>
+                                <span class="badge bg-secondary">CAD</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">500+ students reached</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 col-md-6 project-card" data-category="technical">
+                    <div class="card-custom h-100 reveal">
+                        <div class="position-relative overflow-hidden">
+                            <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: var(--gradient-card);">
+                                <i class="bi bi-headset-vr icon-xl text-primary-custom"></i>
+                            </div>
+                            <span class="badge badge-status badge-development position-absolute top-0 start-0 m-3">Beta</span>
+                            <span class="badge badge-custom position-absolute top-0 end-0 m-3">Training Innovation</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h4 class="h5 fw-bold text-primary-custom mb-3">Virtual Reality Training Platform</h4>
+                            <p class="text-muted-custom mb-4">
+                                VR simulation environment for robot operator training and strategy development.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-secondary">Unity</span>
+                                <span class="badge bg-secondary">VR</span>
+                                <span class="badge bg-secondary">Simulation</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="small fw-bold text-primary-custom mb-0">50% faster training</p>
+                                    <p class="small text-muted-custom">Impact Metric</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm">
+                                    Learn More <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Stats -->
+            <div class="row g-4 mb-5 reveal">
+                <div class="col-6 col-md-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 48px; height: 48px; background: var(--gradient-primary);">
+                                <i class="bi bi-lightbulb-fill text-white"></i>
+                            </div>
+                        </div>
+                        <div class="h4 fw-bold gradient-text mb-1">15+</div>
+                        <p class="small text-muted-custom">Active Projects</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 48px; height: 48px; background: var(--gradient-primary);">
+                                <i class="bi bi-people-fill text-white"></i>
+                            </div>
+                        </div>
+                        <div class="h4 fw-bold gradient-text mb-1">1000+</div>
+                        <p class="small text-muted-custom">Students Impacted</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 48px; height: 48px; background: var(--gradient-primary);">
+                                <i class="bi bi-code text-white"></i>
+                            </div>
+                        </div>
+                        <div class="h4 fw-bold gradient-text mb-1">5+</div>
+                        <p class="small text-muted-custom">Open Source Repos</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 48px; height: 48px; background: var(--gradient-primary);">
+                                <i class="bi bi-globe text-white"></i>
+                            </div>
+                        </div>
+                        <div class="h4 fw-bold gradient-text mb-1">25+</div>
+                        <p class="small text-muted-custom">Community Partners</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center reveal">
+                <div class="card-gradient-border">
+                    <div class="card-body p-5 position-relative" style="z-index: 1;">
+                        <h3 class="h4 fw-bold mb-4 text-primary-custom">Have a Project Idea?</h3>
+                        <p class="text-muted-custom mb-4" style="max-width: 600px; margin: 0 auto;">
+                            We're always looking for new ways to make an impact. Whether it's education, 
+                            innovation, or community outreach, let's collaborate to build something amazing.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <button class="btn btn-glow">
+                                <i class="bi bi-lightbulb me-2"></i>
+                                Propose a Project
+                            </button>
+                            <button class="btn btn-outline-custom">
+                                View All Projects
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section-padding section-bg-alt">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">Our Achievements</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    Competition <span class="gradient-text">Success</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    Years of dedication and hard work have led to numerous awards and recognitions 
+                    in FIRST Robotics competitions worldwide.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #FFD700, #FFA500);">
+                                <i class="bi bi-trophy-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h4 fw-bold gradient-text mb-2">25+</h4>
+                        <p class="text-muted-custom">Awards Won</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #C0C0C0, #A8A8A8);">
+                                <i class="bi bi-award-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h4 fw-bold gradient-text mb-2">15+</h4>
+                        <p class="text-muted-custom">Regional Events</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: linear-gradient(135deg, #CD7F32, #B8860B);">
+                                <i class="bi bi-star-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h4 fw-bold gradient-text mb-2">5+</h4>
+                        <p class="text-muted-custom">Championship Qualifications</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-heart-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h4 fw-bold gradient-text mb-2">100%</h4>
+                        <p class="text-muted-custom">Passion & Dedication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding section-bg">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge badge-custom text-primary-custom border-primary-custom mb-3">Get In Touch</span>
+                <h2 class="display-3 fw-bold mb-4 reveal">
+                    Contact <span class="gradient-text">ARC#6014</span>
+                </h2>
+                <p class="lead text-muted-custom reveal" style="max-width: 800px; margin: 0 auto;">
+                    Ready to collaborate, learn more about our team, or join our mission? 
+                    We'd love to hear from you!
+                </p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-envelope-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Email Us</h4>
+                        <p class="text-muted-custom mb-4">Send us a message and we'll respond as soon as possible.</p>
+                        <button class="btn btn-outline-custom">
+                            contact@arc6014.com
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-instagram text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Follow Us</h4>
+                        <p class="text-muted-custom mb-4">Stay updated with our latest projects and competitions.</p>
+                        <button class="btn btn-outline-custom">
+                            @arc6014
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 text-center p-4 reveal">
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center animate-pulse" 
+                                 style="width: 64px; height: 64px; background: var(--gradient-primary);">
+                                <i class="bi bi-geo-alt-fill text-white icon-lg"></i>
+                            </div>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-primary-custom">Visit Us</h4>
+                        <p class="text-muted-custom mb-4">Come see our workshop at Robert College, Istanbul.</p>
+                        <button class="btn btn-outline-custom">
+                            Istanbul, Turkey
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-custom border-top border-primary-custom py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="navbar-brand-custom me-3">
+                            <i class="bi bi-robot text-white"></i>
+                        </div>
+                        <span class="h4 fw-bold text-primary-custom mb-0">ARC#6014</span>
+                    </div>
+                    <p class="text-muted-custom mb-4">
+                        Inspiring the next generation of engineers through competitive robotics, 
+                        STEM education, and innovation. Based in Istanbul, Turkey.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-outline-custom btn-sm">
+                            <i class="bi bi-github"></i>
+                        </button>
+                        <button class="btn btn-outline-custom btn-sm">
+                            <i class="bi bi-instagram"></i>
+                        </button>
+                        <button class="btn btn-outline-custom btn-sm">
+                            <i class="bi bi-youtube"></i>
+                        </button>
+                        <button class="btn btn-outline-custom btn-sm">
+                            <i class="bi bi-linkedin"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold text-primary-custom mb-3">Quick Links</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#team" class="text-muted-custom text-decoration-none">About Team</a></li>
+                                <li class="mb-2"><a href="#robots" class="text-muted-custom text-decoration-none">Our Robots</a></li>
+                                <li class="mb-2"><a href="#projects" class="text-muted-custom text-decoration-none">Projects</a></li>
+                                <li class="mb-2"><a href="#achievements" class="text-muted-custom text-decoration-none">Achievements</a></li>
+                                <li class="mb-2"><a href="#contact" class="text-muted-custom text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="fw-bold text-primary-custom mb-3">Resources</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">FIRST Robotics</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Robert College</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Competition Schedule</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Sponsorship</a></li>
+                                <li class="mb-2"><a href="#" class="text-muted-custom text-decoration-none">Media Kit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-primary-custom my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted-custom mb-0">
+                        &copy; 2024 ARC#6014. Built with passion for robotics.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted-custom mb-0">
+                        FIRST Robotics Competition Team #6014
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particleContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Random position around the title
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    
+                    particle.style.left = x + '%';
+                    particle.style.top = y + '%';
+                    particle.style.animationDelay = Math.random() * 3 + 's';
+                    particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    
+                    container.appendChild(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 6000);
+                }, i * 100);
+            }
+        }
+
+
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Reveal animation on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Hero particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Projects filter functionality
+        const filterButtons = document.querySelectorAll('.btn-filter');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('btn-glow');
+                    btn.classList.add('btn-outline-custom');
+                    btn.classList.remove('active');
+                });
+                this.classList.add('btn-glow');
+                this.classList.remove('btn-outline-custom');
+                this.classList.add('active');
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Mobile menu handling
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        document.addEventListener('click', function(e) {
+            if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target)) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+
+        // Add click handlers for nav links to close mobile menu
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarCollapse.classList.remove('show');
+            });
+        });
+
+        // Initialize all reveal elements on page load
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 100);
+            });
+        }, 500);
+        function init() {
+            createParticles();            
+            // Recreate particles periodically
+            setInterval(createParticles, 8000);
+        }
+
+
+        document.addEventListener('DOMContentLoaded', init);
+        
+        console.log('ARC#6014 website loaded successfully! 🤖');
+    </script>
+</body>
+</html>

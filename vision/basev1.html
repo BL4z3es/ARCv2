@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Team - Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: hsl(0, 0%, 8%);
+            --foreground: hsl(320, 50%, 90%);
+            --card: hsl(0, 0%, 12%);
+            --card-foreground: hsl(320, 50%, 90%);
+            --primary: hsl(320, 85%, 60%);
+            --primary-foreground: hsl(0, 0%, 8%);
+            --secondary: hsl(0, 0%, 15%);
+            --secondary-foreground: hsl(320, 50%, 90%);
+            --muted: hsl(0, 0%, 15%);
+            --muted-foreground: hsl(320, 20%, 65%);
+            --accent: hsl(320, 85%, 60%);
+            --accent-foreground: hsl(0, 0%, 8%);
+            --border: hsl(0, 0%, 20%);
+            --radius: 0.5rem;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom Pink Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 6px;
+            border: 2px solid var(--background);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Firefox scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--background);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(12, 12, 12, 0.5);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-button {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--foreground);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: var(--muted);
+            color: var(--primary);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-button {
+                display: none;
+            }
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        .hero-placeholder {
+            height: 8rem;
+            background-color: var(--muted);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .placeholder-text {
+            color: var(--muted-foreground);
+        }
+
+        .content-section {
+            padding: 4rem 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .content-card {
+            height: 16rem;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .additional-section {
+            padding: 5rem 1rem;
+        }
+
+        .additional-placeholder {
+            height: 24rem;
+            background-color: var(--muted);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--card);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section p {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">RoboticsTeam</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Team</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+            <button class="menu-button">Menu</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>RoboticsTeam</h3>
+                    <p>Base footer content area for robotics team information.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" style="visibility: hidden;">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoboticsTeam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
