@@ -233,53 +233,6 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Hero Text */
-        .particle-title {
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            position: relative;
-            background: linear-gradient(135deg, #b847ff, #ff47b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow-pulse 2s ease-in-out infinite alternate;
-        }
-
-        .particle-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: #b847ff;
-            border-radius: 50%;
-            animation: particle-float 3s ease-in-out infinite;
-            box-shadow: 0 0 10px #b847ff;
-        }
-
-        @keyframes glow-pulse {
-            0% { filter: drop-shadow(0 0 20px #b847ff); }
-            100% { filter: drop-shadow(0 0 40px #ff47b8); }
-        }
-
-        @keyframes particle-float {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-        }
-
-
-
-
-
         /* Badges */
         .badge-custom {
             background: var(--gradient-card);
@@ -447,7 +400,7 @@
                     </div>
                     
                     <!-- Main Heading -->
-                    <h1 class="display-1 fw-bold mb-4 reveal particle-title">
+                    <h1 class="display-1 fw-bold mb-4 reveal">
                         <span class="gradient-text">ARC#6014</span>
                     </h1>
                     <div class="particle-container" id="particleContainer"></div>
@@ -591,7 +544,7 @@
             </div>
 
             <!-- Team Stats -->
-            <div class="row g-4 text-center">
+            <div class="row g-4 text-center mb-5">
                 <div class="col-md-4">
                     <div class="reveal">
                         <div class="display-4 fw-bold gradient-text mb-2">2016</div>
@@ -611,6 +564,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -1174,6 +1128,111 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
+            
+            <!-- Past Awards Section -->
+            <div class="text-center mb-4">
+                <h2 class="h2 fw-bold text-primary-custom mb-4 reveal">Past Awards & Recognition</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #FFD700, #FFA500);">
+                                <i class="bi bi-trophy-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Regional Champion</h5>
+                                <p class="text-muted-custom small mb-0">2023 Istanbul Regional</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">First place in alliance selection and elimination rounds.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #C0C0C0, #A8A8A8);">
+                                <i class="bi bi-award-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Innovation Award</h5>
+                                <p class="text-muted-custom small mb-0">2022 Turkey Championship</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">Recognized for breakthrough autonomous navigation system.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #CD7F32, #B8860B);">
+                                <i class="bi bi-star-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Rookie All-Star</h5>
+                                <p class="text-muted-custom small mb-0">2017 Turkey Regional</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">Outstanding performance as a first-year team.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: var(--gradient-primary);">
+                                <i class="bi bi-people-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Gracious Professionalism</h5>
+                                <p class="text-muted-custom small mb-0">2021 Istanbul Regional</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">Exemplifying FIRST values in competition and community.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #8B5CF6, #E94B97);">
+                                <i class="bi bi-gear-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Engineering Excellence</h5>
+                                <p class="text-muted-custom small mb-0">2020 World Championship</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">Superior mechanical design and engineering documentation.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100 p-4 reveal">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #10B981, #059669);">
+                                <i class="bi bi-lightbulb-fill text-white"></i>
+                            </div>
+                            <div>
+                                <h5 class="h6 fw-bold mb-1 text-primary-custom">Creativity Award</h5>
+                                <p class="text-muted-custom small mb-0">2019 Turkey Championship</p>
+                            </div>
+                        </div>
+                        <p class="text-muted-custom small">Most creative and elegant solution to game challenges.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1461,15 +1520,7 @@
                 }, index * 100);
             });
         }, 500);
-        function init() {
-            createParticles();            
-            // Recreate particles periodically
-            setInterval(createParticles, 8000);
-        }
 
-
-        document.addEventListener('DOMContentLoaded', init);
-        
         console.log('ARC#6014 website loaded successfully! 🤖');
     </script>
 </body>
