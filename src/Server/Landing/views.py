@@ -27,3 +27,9 @@ def projects_page(request):
     Render the projects page.
     """
     return render(request, 'Landing/projects.html')
+
+def achievements_page(request):
+    """
+    Render the achievements page.
+    """
+    return render(request, 'Landing/achievements.html')
